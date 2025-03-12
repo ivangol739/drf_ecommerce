@@ -147,6 +147,9 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "API",
     "VERSION": "0.0.1",
     "SERVE_INCLUDE_SCHEMA": False,
+    "SWAGGER_UI_SETTINGS": {
+        "persistAuthorization": True,  # не сбрасывать авторизацию
+    },
 }
 
 SIMPLE_JWT = {
@@ -155,3 +158,6 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
 }
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
