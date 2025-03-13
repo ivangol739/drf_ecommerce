@@ -8,7 +8,7 @@ class ProfileSerializer(serializers.Serializer):
     avatar = serializers.ImageField(required=False)
     account_type = serializers.CharField(read_only=True)
 
-#эндпоинт работы с адресами доставки у пользователя
+#эндпоинты работы с адресами доставки у пользователя
 class ShippingAddressSerializer(serializers.Serializer):
     id = serializers.UUIDField(read_only=True)
     full_name = serializers.CharField(max_length=500)
