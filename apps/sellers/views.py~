@@ -69,21 +69,4 @@ class ProductsBySellerView(APIView):
     )
 
     def post(self, request, *args, **kwargs):
-        serializer = CreateProductSerializer(data=request.data)
-        seller = Seller.objects.get_or_none(user=request.user, is_approved=True)
-        if not seller:
-            return Response(data={"message": "Access is denied"}, status=403)
-        if serializer.is_valid():
-            data = serializer.validated_data
-            category_slug = data.pop("category_slug", None)
-            category = Category.objects.get_or_none(slug=category_slug)
-            if not category:
-                return Response(data={"message": "Category does not exist!"}, status=404)
-            data['category'] = category
-            data['seller'] = seller
-            new_prod = Product.objects.create(**data)
-            serializer = self.serializer_class(new_prod)
-            return Response(serializer.data, status=200)
-        else:
-            return Response(serializer.errors, status=400)
-
+        
